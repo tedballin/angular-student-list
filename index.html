@@ -1,0 +1,59 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>webdxd student List> </title>
+  <link rel="stylesheet"type="text/css" href="css/style.min.css">
+    <!-- everything is based on angular -->
+ <script type="text/javascript" src="js/angular.min.js"></script>
+ <script type="text/javascript" src="js/app.js"></script>
+</head>
+<body ng-app="student">
+  <div ng-controller="studentController">
+    <div class="student-list">
+      <div ng-repeat="student in students">
+        <!-- getStudentDetail() function -->
+        <h1 ng-click="getStudentDetail(student._id)">{{ student.firstName }}</h1>
+  </div>
+  <div class="add-new" ng-click="showEditForm">
+    <h1>Add New</h1>
+  </div>
+</div>
+<div ng-show="clickedStudent" class="student-detail">
+    <span>First Name</span>
+    <p>{{ clickedStudent.firstName }} </P>
+    <span>Last Name</span>
+    <p>{{clickedStudent.lastName}} </P>
+    <span>Age</span>
+    <p>{{clickedStudent.age}} </P>
+    <span>School</span>
+    <p>{{clickedStudent.school}} </P>
+      <button ng-click="showEditForm()">Edit</button>
+      <button class="delete-btn" ng-click="deleteStudent(clickedStudent_id)">Delete</button>
+</div>
+<div ng-hide="clickedStudent" class="student-detail">
+  <span>First Name</span>
+  <div>
+    <!-- newStudent is automatically defined as uset type in the input -->
+    <input type = "text" name = "firstName"
+    ng-model = "newStudent.firstName">
+  </div>
+  <span>Last Name</span>
+  <div>
+    <input type = "text" name = "lastName"
+    ng-model = "newStudent.lastName">
+  </div>
+  <span>Age</span>
+  <div>
+    <input type = "text" name = "age"
+    ng-model = "newStudent.age">
+  </div>
+  <span>School</span>
+  <div>
+    <input type = "text" name = "school"
+    ng-model = "newStudent.school">
+  </div>
+  <button ng-click="createNewStudent()">Submit</button>
+</div>
+</div>
+    </body>
+</html>
